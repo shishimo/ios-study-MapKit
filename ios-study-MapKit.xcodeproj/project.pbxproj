@@ -21,6 +21,9 @@
 		C85224A9189D7B55000EBB83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C852248B189D7B55000EBB83 /* UIKit.framework */; };
 		C85224B1189D7B55000EBB83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C85224AF189D7B55000EBB83 /* InfoPlist.strings */; };
 		C85224B3189D7B55000EBB83 /* ios_study_MapKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85224B2189D7B55000EBB83 /* ios_study_MapKitTests.m */; };
+		C8D7A44F189D7C7700A2397E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D7A44E189D7C7700A2397E /* CoreLocation.framework */; };
+		C8D7A451189D7C7D00A2397E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D7A450189D7C7D00A2397E /* MapKit.framework */; };
+		C8D7A454189D7D5F00A2397E /* Canvas.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D7A453189D7D5F00A2397E /* Canvas.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,10 @@
 		C85224AE189D7B55000EBB83 /* ios-study-MapKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-study-MapKitTests-Info.plist"; sourceTree = "<group>"; };
 		C85224B0189D7B55000EBB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C85224B2189D7B55000EBB83 /* ios_study_MapKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_study_MapKitTests.m; sourceTree = "<group>"; };
+		C8D7A44E189D7C7700A2397E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C8D7A450189D7C7D00A2397E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C8D7A452189D7D5F00A2397E /* Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
+		C8D7A453189D7D5F00A2397E /* Canvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Canvas.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D7A451189D7C7D00A2397E /* MapKit.framework in Frameworks */,
+				C8D7A44F189D7C7700A2397E /* CoreLocation.framework in Frameworks */,
 				C852248A189D7B55000EBB83 /* CoreGraphics.framework in Frameworks */,
 				C852248C189D7B55000EBB83 /* UIKit.framework in Frameworks */,
 				C8522488189D7B55000EBB83 /* Foundation.framework in Frameworks */,
@@ -101,6 +110,8 @@
 		C8522486189D7B55000EBB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8D7A450189D7C7D00A2397E /* MapKit.framework */,
+				C8D7A44E189D7C7700A2397E /* CoreLocation.framework */,
 				C8522487189D7B55000EBB83 /* Foundation.framework */,
 				C8522489189D7B55000EBB83 /* CoreGraphics.framework */,
 				C852248B189D7B55000EBB83 /* UIKit.framework */,
@@ -119,6 +130,8 @@
 				C852249D189D7B55000EBB83 /* ViewController.m */,
 				C852249F189D7B55000EBB83 /* Images.xcassets */,
 				C852248E189D7B55000EBB83 /* Supporting Files */,
+				C8D7A452189D7D5F00A2397E /* Canvas.h */,
+				C8D7A453189D7D5F00A2397E /* Canvas.m */,
 			);
 			path = "ios-study-MapKit";
 			sourceTree = "<group>";
@@ -252,6 +265,7 @@
 				C852249E189D7B55000EBB83 /* ViewController.m in Sources */,
 				C8522498189D7B55000EBB83 /* AppDelegate.m in Sources */,
 				C8522494189D7B55000EBB83 /* main.m in Sources */,
+				C8D7A454189D7D5F00A2397E /* Canvas.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +474,7 @@
 				C85224B8189D7B55000EBB83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C85224B9189D7B55000EBB83 /* Build configuration list for PBXNativeTarget "ios-study-MapKitTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +483,7 @@
 				C85224BB189D7B55000EBB83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

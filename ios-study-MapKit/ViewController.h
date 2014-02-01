@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+
+#import "Canvas.h"
+
+@interface ViewController : UIViewController<MKMapViewDelegate, CanvasDelegate>
+
+@property BOOL onDraw;
+@property Canvas *canvasView;
+@property (weak, nonatomic) IBOutlet UIButton *drawButton;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+- (IBAction)pushDrawButton:(id)sender;
 
 @end
