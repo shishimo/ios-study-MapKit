@@ -12,6 +12,7 @@
 #import <MapKit/MapKit.h>
 
 #import "Canvas.h"
+#import "Annotation.h"
 
 @interface ViewController : UIViewController<MKMapViewDelegate, CanvasDelegate>
 
@@ -21,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)pushDrawButton:(id)sender;
+- (IBAction)pushRouteButton:(id)sender;
 
 @end

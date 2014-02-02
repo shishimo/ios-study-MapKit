@@ -97,6 +97,14 @@
         polygonRenderer.fillColor = [UIColor blueColor];
         polygonRenderer.alpha = 0.1;
         return polygonRenderer;
+    } else if ([overlay isKindOfClass:[MKCircle class]]) {
+        MKCircle *circle = overlay;
+        MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithCircle:circle];
+        circleRenderer.fillColor = [UIColor blueColor];
+        circleRenderer.lineWidth = 1.0;
+        circleRenderer.strokeColor = [UIColor blueColor];
+        circleRenderer.alpha = 0.05;
+        return circleRenderer;
     } else {
         return nil;
     }
@@ -157,6 +165,8 @@
     self.canvasView = nil;
 }
 
+
+
 #pragma mark - ViewController IBAction methods
 
 - (IBAction)pushDrawButton:(id)sender
@@ -166,7 +176,7 @@
         self.mapView.zoomEnabled   = YES;
         [self.drawButton setTitle:@"絵を描く" forState:UIControlStateNormal];
         self.onDraw = NO;
-        
+
         // 描画領域を削除
         [self.canvasView removeFromSuperview];
         self.canvasView = nil;
@@ -176,7 +186,7 @@
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.drawButton setTitle:@"描画中" forState:UIControlStateNormal];
         self.onDraw = YES;
-        
+
         // 描画領域を作成
         self.canvasView = [[Canvas alloc] initWithFrame:self.mapView.bounds];
         self.canvasView.delegate = self;
@@ -184,5 +194,83 @@
         [self.canvasView setAlpha:0.5];
         [self.view addSubview:self.canvasView];
     }
+}
+
+- (IBAction)pushRouteButton:(id)sender
+{
+    // 東京都庁から渋谷までの経路を表示する
+
+    // まず出発点と到着点を CLLocationCoordinate2D で作成します。
+    CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(35.68664111, 139.6948839); // 東京都庁
+    CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(35.658987, 139.702776);   // 渋谷
+
+    // CLLocationCoordinate2D から MKPlacemark を生成
+    MKPlacemark *fromPlacemark = [[MKPlacemark alloc] initWithCoordinate:fromCoordinate addressDictionary:nil];
+    MKPlacemark *toPlacemark   = [[MKPlacemark alloc] initWithCoordinate:toCoordinate addressDictionary:nil];
+
+    // MKPlacemark から MKMapItem を生成
+    MKMapItem *fromItem = [[MKMapItem alloc] initWithPlacemark:fromPlacemark];
+    MKMapItem *toItem   = [[MKMapItem alloc] initWithPlacemark:toPlacemark];
+
+    // MKMapItem をセットして MKDirectionsRequest を生成
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    request.source = fromItem;
+    request.destination = toItem;
+    request.requestsAlternateRoutes = YES;
+
+    // MKDirectionsRequest から MKDirections を生成
+    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+
+    // 経路検索を実行
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error)
+     {
+         if (error) return;
+
+         if ([response.routes count] > 0)
+         {
+             MKRoute *route = [response.routes objectAtIndex:0];
+             MKPolyline* line = route.polyline;
+
+             // 地図上にルートを描画
+             [self.mapView addOverlay:line];
+
+             CLLocationCoordinate2D coors[line.pointCount];
+             NSRange range = NSMakeRange(0, line.pointCount);
+
+             [line getCoordinates:coors range:range];
+
+             for (int i=0; i<line.pointCount; ++i) {
+                 /*
+                 Annotation *annotation =
+                 [[Annotation alloc] initWithLocationCoordinate:coors[i]
+                                                          title:[NSString stringWithFormat:@"%d番目", i]
+                                                       subtitle:@""];
+                 [self.mapView addAnnotation:annotation];
+                 */
+
+                 MKCircle *circle = [MKCircle circleWithCenterCoordinate:coors[i] radius:500];
+                 [self.mapView addOverlay:circle];
+             }
+
+             /*
+             // ルートの中心点にフラグを立てる
+             Annotation *annotation =
+                 [[Annotation alloc] initWithLocationCoordinate:route.polyline.coordinate
+                                                          title:route.name
+                                                       subtitle:[NSString stringWithFormat:@"%.2f", route.distance]];
+             [self.mapView addAnnotation:annotation];
+
+             // 各ルートの最後にフラグを立てる
+             NSArray *steps = route.steps;
+             for (MKRouteStep *step in steps) {
+                 Annotation *annotation =
+                 [[Annotation alloc] initWithLocationCoordinate:step.polyline.coordinate
+                                                          title:step.instructions
+                                                          subtitle:@""];
+                 [self.mapView addAnnotation:annotation];
+             }
+             */
+         }
+     }];
 }
 @end

@@ -24,6 +24,7 @@
 		C8D7A44F189D7C7700A2397E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D7A44E189D7C7700A2397E /* CoreLocation.framework */; };
 		C8D7A451189D7C7D00A2397E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D7A450189D7C7D00A2397E /* MapKit.framework */; };
 		C8D7A454189D7D5F00A2397E /* Canvas.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D7A453189D7D5F00A2397E /* Canvas.m */; };
+		C8D7A457189DD15700A2397E /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D7A456189DD15700A2397E /* Annotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		C8D7A450189D7C7D00A2397E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C8D7A452189D7D5F00A2397E /* Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
 		C8D7A453189D7D5F00A2397E /* Canvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Canvas.m; sourceTree = "<group>"; };
+		C8D7A455189DD15700A2397E /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		C8D7A456189DD15700A2397E /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				C852248E189D7B55000EBB83 /* Supporting Files */,
 				C8D7A452189D7D5F00A2397E /* Canvas.h */,
 				C8D7A453189D7D5F00A2397E /* Canvas.m */,
+				C8D7A455189DD15700A2397E /* Annotation.h */,
+				C8D7A456189DD15700A2397E /* Annotation.m */,
 			);
 			path = "ios-study-MapKit";
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D7A457189DD15700A2397E /* Annotation.m in Sources */,
 				C852249E189D7B55000EBB83 /* ViewController.m in Sources */,
 				C8522498189D7B55000EBB83 /* AppDelegate.m in Sources */,
 				C8522494189D7B55000EBB83 /* main.m in Sources */,
